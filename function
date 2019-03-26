@@ -1,4 +1,4 @@
-int stripos (char *haystack, char *needle, int offset)
+int stripos(char *haystack, char *needle, int offset)
 {
 	int i = 0, j = 0, position = 0;
 	
@@ -15,24 +15,25 @@ int stripos (char *haystack, char *needle, int offset)
 		}
 		j++;
 	}
+
+	
 	//Find needle in haystack
 	for (i = offset, j = 0;haystack[i] != '\0';i ++){
 		if (haystack[i] == needle[j]) {
 			if (j == 0){
-				position = i;
+				position = i;       //Store the position of the first occurence.
 			}
 			j ++;
 			if (needle[j] == '\0'){
-				return position;
+				return position;   //Return position if all the elements are compared.
 			}
 		}
 		else{
 			if (j != 0){
-				i = position;
+				i = position;	  //Return back to the position if the rest are not the same.
 			}
 			j = 0;
 		} 
-		
 	}
 	return -1;
 }
