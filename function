@@ -1,4 +1,3 @@
-#include <stdio.h>
 int stripos (char *haystack, char *needle, int offset)
 {
 	int i = 0, j = 0, position = 0;
@@ -27,16 +26,13 @@ int stripos (char *haystack, char *needle, int offset)
 				return position;
 			}
 		}
-		else j = 0;
+		else{
+			if (j != 0){
+				i = position;
+			}
+			j = 0;
+		} 
 		
 	}
 	return -1;
-}
-
-int main(void){
-	char haystack[] = "I aappledidnot have an apple appple";
-	char needle[] = "apple";
-	int i;
-	i = stripos(haystack, needle, 0);
-	printf("%d",i);
 }
