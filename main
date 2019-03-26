@@ -1,0 +1,42 @@
+#include <stdio.h>
+int stripos (char *haystack, char *needle, int offset)
+{
+	int i = 0, j = 0, position = 0;
+	
+	//Convert two strings to lowercase to achieve case insensitive.
+	while (haystack[i] != '\0') {
+		if (haystack[i] >= 'A' && haystack[i] <= 'Z') {
+			haystack[i] = haystack[i] + 32;
+		}
+		i++;
+	}
+	while (needle[j] != '\0') {
+		if (needle[j] >= 'A' && needle[j] <= 'Z') {
+			needle[j] = needle[j] + 32;
+		}
+		j++;
+	}
+	//Find needle in haystack
+	for (i = offset, j = 0;haystack[i] != '\0';i ++){
+		if (haystack[i] == needle[j]) {
+			if (j == 0){
+				position = i;
+			}
+			j ++;
+			if (needle[j] == '\0'){
+				return position;
+			}
+		}
+		else j = 0;
+		
+	}
+	return -1;
+}
+
+int main(void){
+	char haystack[] = "I aappledidnot have an apple appple";
+	char needle[] = "apple";
+	int i;
+	i = stripos(haystack, needle, 0);
+	printf("%d",i);
+}
